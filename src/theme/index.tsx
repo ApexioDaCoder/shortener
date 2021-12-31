@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes, ThemeOptions } from '@material-ui/core/styles';
 
 declare module '@material-ui/core/styles/createPalette' {
   interface ColorRange {
@@ -544,7 +544,7 @@ export function getThemedComponents(theme: any) {
         },
       },
     },
-  };
+  } as ThemeOptions;
 }
 
 const darkTheme = createMuiTheme(getDesignTokens('dark'));
