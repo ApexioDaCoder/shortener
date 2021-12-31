@@ -267,7 +267,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') =>
         fontWeight: 700,
       },
     },
-  });
+  } as ThemeOptions);
 
 export function getThemedComponents(theme: any) {
   return {
@@ -544,7 +544,7 @@ export function getThemedComponents(theme: any) {
         },
       },
     },
-  } as ThemeOptions;
+  };
 }
 
 const darkTheme = createMuiTheme(getDesignTokens('dark'));
