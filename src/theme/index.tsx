@@ -1,5 +1,4 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-import { deepmerge } from '@material-ui/utils';
 
 declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
@@ -549,7 +548,6 @@ export function getThemedComponents(theme: any) {
 }
 
 const darkTheme = createMuiTheme(getDesignTokens('dark'));
-export const brandingDarkTheme = deepmerge(darkTheme, getThemedComponents(darkTheme));
 
 let theme = createMuiTheme({
   palette: {
@@ -564,4 +562,4 @@ let theme = createMuiTheme({
 });
 theme = responsiveFontSizes(theme);
 
-export default brandingDarkTheme;
+export default darkTheme;
