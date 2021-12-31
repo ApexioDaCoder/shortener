@@ -113,9 +113,21 @@ const HomeView = () => {
 
   return (
     <>
-      <Box flex={1} height="200px" marginBottom={2}>
+      <Box
+        height="200px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
         <UrlShortenerSvg />
       </Box>
+      <Alert severity={'info'}>
+        Based on{' '}
+        <ExternalLink href="https://onurl.vercel.app/" hasIcon>
+          OnURL
+        </ExternalLink>
+      </Alert>
+      <Spacer marginY={1} />
       <Formik<ShortUrlInput>
         initialValues={initialValues}
         validationSchema={shortUrlInputSchema}
@@ -173,9 +185,6 @@ const HomeView = () => {
                         {url}
                       </ExternalLink>
                     </Typography>
-                    <Typography>
-                      <Bold>Old URL Length:</Bold> {url.length} characters
-                    </Typography>
                   </Box>
                 )}
                 {shortenedUrl && (
@@ -210,10 +219,6 @@ const HomeView = () => {
                     <Typography variant="subtitle2" color="textSecondary">
                       Click the link to open it in a new tab
                     </Typography>
-                    <Typography>
-                      <Bold>New URL Length:</Bold> {shortenedUrl.length}{' '}
-                      characters
-                    </Typography>
                   </Box>
                 )}
                 {shortenedUrl && (
@@ -224,7 +229,6 @@ const HomeView = () => {
                     <UrlQrCode url={shortenedUrl} size={qrCodeSize} />
                   </Box>
                 )}
-                <ShareButtons url={shortenedUrl} />
               </Spacer>
             </>
           );

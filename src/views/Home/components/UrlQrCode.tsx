@@ -7,6 +7,8 @@ import BaseButton from '@/components/BaseButton';
 import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined';
 
 const SaveButton = styled(BaseButton)`
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   width: 100%;
 ` as typeof BaseButton;
 
@@ -15,13 +17,14 @@ const qrCodeId = 'qrCode';
 const handleSaveQrCode = async () => {
   const canvas = document.getElementById(qrCodeId) as HTMLCanvasElement;
   const png = canvas?.toDataURL();
-  saveAs(png, `OnUrl-QRCode-${Date.now}`);
+  saveAs(png, `qr-link`);
 };
 
 const StyledQRCode = styled(QRCode)`
   display: block;
   height: auto !important;
   width: 100% !important;
+  border: 3px solid #fff;
 `;
 
 interface UrlQrCodeProps {
