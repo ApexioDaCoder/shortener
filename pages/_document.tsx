@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
         <Head>
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
+          <link rel="icon" type="image/svg+xml" href="/logo.svg" />
         </Head>
         <body>
           <Main />

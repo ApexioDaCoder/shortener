@@ -127,7 +127,7 @@ const HomeView = () => {
           OnURL
         </ExternalLink>
       </Alert>
-      <Spacer marginY={1} />
+      <Spacer flexDirection="column" marginY={1} />
       <Formik<ShortUrlInput>
         initialValues={initialValues}
         validationSchema={shortUrlInputSchema}

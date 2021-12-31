@@ -21,30 +21,9 @@ const getDefaultSeoConfig = (pathname: string): DefaultSeoProps => {
       type: 'website',
       description,
       site_name: appTitle,
-      images: [
-        {
-          url: `${baseUrl}/logo_400.png`,
-          height: 400,
-          width: 400,
-          alt: 'OnURL large logo',
-        },
-        {
-          url: `${baseUrl}/logo_200.png`,
-          height: 200,
-          width: 200,
-          alt: 'OnURL medium logo',
-        },
-        {
-          url: `${baseUrl}/logo_80.png`,
-          height: 80,
-          width: 80,
-          alt: 'OnURL small logo',
-        },
-      ],
     },
     additionalMetaTags: [
       { name: 'application-name', content: title },
-      { property: 'dc:creator', content: 'Onur Önder' },
     ],
   };
 };
