@@ -1,6 +1,6 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
-declare module '@mui/material/styles/createPalette' {
+declare module '@material-ui/core/styles/createPalette' {
   interface ColorRange {
     50: string;
     100: string;
@@ -21,7 +21,7 @@ declare module '@mui/material/styles/createPalette' {
   }
 }
 
-declare module '@mui/material/styles/createTypography' {
+declare module '@material-ui/core/styles/createTypography' {
   interface TypographyOptions {
     fontWeightExtraBold?: number;
     fontFamilyCode?: string;
