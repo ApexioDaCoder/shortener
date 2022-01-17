@@ -33,7 +33,7 @@ const StyledTextField = styled(TextField)(({ theme }: Theme) => ({
     },
   },
   '& .MuiFormHelperText-root': {
-    marginTop: '15px',
+    marginTop: '10px',
   },
 }));
 

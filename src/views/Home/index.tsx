@@ -138,7 +138,7 @@ const HomeView = () => {
           return (
             <>
               <Form noValidate>
-                <Spacer flexDirection="column" spacing={2}>
+                <Spacer flexDirection="column" spacing={1}>
                   <BaseTextField
                     name="url"
                     label="URL"
