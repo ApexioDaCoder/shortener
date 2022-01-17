@@ -18,9 +18,6 @@ import Alert from '@mui/material/Alert';
 import { Bold } from '@/components/StyleUtils';
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Card from '@mui/Card';
-import CardActions from '@mui/CardActions';
-import CardContent from '@mui/CardContent';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isAxiosError(error: any): error is AxiosError {
