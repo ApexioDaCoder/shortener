@@ -18,6 +18,9 @@ import Alert from '@material-ui/lab/Alert';
 import { Bold } from '@/components/StyleUtils';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import Card from '@material-ui/Card';
+import CardActions from '@material-ui/CardActions';
+import CardContent from '@material-ui/CardContent';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isAxiosError(error: any): error is AxiosError {
@@ -121,13 +124,7 @@ const HomeView = () => {
       >
         <UrlShortenerSvg />
       </Box>
-      <Alert severity={'info'}>
-        Based on{' '}
-        <ExternalLink href="https://onurl.vercel.app/" hasIcon>
-          OnURL
-        </ExternalLink>
-      </Alert>
-      <Spacer flexDirection="column" marginY={1} />
+      <Spacer spacing={0} flexDirection="column" marginY={1} />
       <Formik<ShortUrlInput>
         initialValues={initialValues}
         validationSchema={shortUrlInputSchema}
@@ -177,21 +174,17 @@ const HomeView = () => {
                     </Alert>
                   </Box>
                 )}
-                {url && (
-                  <Box>
-                    <Typography noWrap>
-                      <Bold>Old URL:</Bold>{' '}
-                      <ExternalLink href={url} hasIcon>
-                        {url}
-                      </ExternalLink>
-                    </Typography>
-                  </Box>
-                )}
-                {shortenedUrl && (
-                  <Box>
+                <Box sx={{ backgroundColor: 'white' }}>
+                  {url && (
+                    <Box>
+                      <Typography noWrap>
+                        <ExternalLink href={url}>{url}</ExternalLink>
+                      </Typography>
+                    </Box>
+                  )}
+                  {shortenedUrl && (
                     <Box display="flex" alignItems="center">
                       <Typography noWrap>
-                        <Bold>New URL:</Bold>{' '}
                         <ExternalLink href={shortenedUrl}>
                           {shortenedUrl}
                         </ExternalLink>
@@ -216,19 +209,16 @@ const HomeView = () => {
                         </CopyToClipboard>
                       </Box>
                     </Box>
-                    <Typography variant="subtitle2" color="textSecondary">
-                      Click the link to open it in a new tab
-                    </Typography>
-                  </Box>
-                )}
-                {shortenedUrl && (
+                  )}
+                </Box>
+                {/*shortenedUrl && (
                   <Box maxWidth={qrCodeSize}>
                     <Typography>
                       <Bold>QR Code:</Bold>
                     </Typography>
                     <UrlQrCode url={shortenedUrl} size={qrCodeSize} />
                   </Box>
-                )}
+                )*/}
               </Spacer>
             </>
           );

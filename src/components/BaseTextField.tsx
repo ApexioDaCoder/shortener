@@ -1,9 +1,33 @@
 import React, { useEffect, useRef } from 'react';
 import { TextField, TextFieldProps } from '@material-ui/core';
 import { useField, FieldHookConfig } from 'formik';
+import { styled } from '@material-ui/styles';
 
 export type BaseTextFieldProps = TextFieldProps &
   FieldHookConfig<TextFieldProps['value']>;
+
+const StyledTextField = styled(TextField)(({ theme }) => ({
+  '& .MuiFilledInput-root': {
+    overflow: 'hidden',
+    borderRadius: 6,
+    backgroundColor: '#1e293b',
+    boxShadow: 'inset 0 1px #ffffff0d, 0 1px 2px #0000000d',
+    transition: theme.transitions.create([
+      'border-color',
+      'background-color',
+      'box-shadow',
+    ]),
+    '&:hover': {
+      backgroundColor: '#29374b',
+    },
+    '&.Mui-focused': {
+      backgroundColor: '#334155',
+    },
+  },
+  '& .MuiFormHelperText-root': {
+    marginTop: '15px'
+  }
+}));
 
 function BaseTextField(props: BaseTextFieldProps) {
   const [field, meta] = useField(props);
@@ -23,8 +47,8 @@ function BaseTextField(props: BaseTextFieldProps) {
   }, [autoFocus]);
 
   return (
-    <TextField
-      {...{ ...props, ...field, variant: props.variant ?? 'outlined' }}
+    <StyledTextField
+      {...{ ...props, ...field, variant: props.variant ?? 'filled' }}
       inputRef={inputRef}
       // To be able to set the value as "undefined"
       // or "null" in Formik etc
@@ -32,6 +56,7 @@ function BaseTextField(props: BaseTextFieldProps) {
       fullWidth
       error={hasError}
       helperText={errorMessage}
+      InputProps={{ disableUnderline: true }}
     />
   );
 }
