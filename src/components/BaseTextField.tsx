@@ -56,7 +56,7 @@ function BaseTextField(props: BaseTextFieldProps) {
 
   return (
     <StyledTextField
-      {...{ ...props, ...field, variant: props.variant ?? 'filled' }}
+      {...{ ...props, ...field }}
       inputRef={inputRef}
       // To be able to set the value as "undefined"
       // or "null" in Formik etc
@@ -64,6 +64,7 @@ function BaseTextField(props: BaseTextFieldProps) {
       fullWidth
       error={hasError}
       helperText={errorMessage}
+      variant="filled"
       InputProps={{ disableUnderline: true }}
     />
   );
