@@ -138,7 +138,7 @@ const HomeView = () => {
           return (
             <>
               <Form noValidate>
-                <Spacer flexDirection="column" spacing={1}>
+                <Box display="flex" flexDirection="column" gap="10px">
                   <BaseTextField
                     name="url"
                     label="URL"
@@ -167,7 +167,7 @@ const HomeView = () => {
                       Submit
                     </BaseButton>
                   </Box>
-                </Spacer>
+                </Box>
               </Form>
               <Spacer flexDirection="column" spacing={2} marginY={1}>
                 {error && (
