@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes, ThemeOptions } from '@material-ui/core/styles';
 
 declare module '@material-ui/core/styles/createPalette' {
   interface ColorRange {
@@ -267,7 +267,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') =>
         fontWeight: 700,
       },
     },
-  });
+  } as ThemeOptions);
 
 export function getThemedComponents(theme: any) {
   return {

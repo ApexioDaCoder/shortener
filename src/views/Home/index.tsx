@@ -124,7 +124,13 @@ const HomeView = () => {
       >
         <UrlShortenerSvg />
       </Box>
-      <Spacer spacing={0} flexDirection="column" marginY={1} />
+      <Alert severity={'info'}>
+        Based on{' '}
+        <ExternalLink href="https://onurl.vercel.app/" hasIcon>
+          OnURL
+        </ExternalLink>
+      </Alert>
+      <Spacer flexDirection="column" marginY={1} spacing={1}></Spacer>
       <Formik<ShortUrlInput>
         initialValues={initialValues}
         validationSchema={shortUrlInputSchema}
