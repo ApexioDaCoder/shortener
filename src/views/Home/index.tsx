@@ -18,6 +18,13 @@ import Alert from '@mui/material/Alert';
 import { Bold } from '@/components/StyleUtils';
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import styled from 'styled-components';
+
+const StyledBox=styled(Box)`
+  & > .jss1 {
+    min-height: 0;
+  }
+`
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isAxiosError(error: any): error is AxiosError {
@@ -138,7 +145,7 @@ const HomeView = () => {
           return (
             <>
               <Form noValidate>
-                <Box display="flex" flexDirection="column" gap="10px">
+                <StyledBox display="flex" flexDirection="column" gap="10px">
                   <BaseTextField
                     name="url"
                     label="URL"
@@ -167,7 +174,7 @@ const HomeView = () => {
                       Submit
                     </BaseButton>
                   </Box>
-                </Box>
+                </StyledBox>
               </Form>
               <Spacer flexDirection="column" spacing={2} marginY={1}>
                 {error && (
