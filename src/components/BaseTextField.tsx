@@ -3,10 +3,18 @@ import { TextField, TextFieldProps } from '@mui/material';
 import { useField, FieldHookConfig } from 'formik';
 import { styled } from '@mui/styles';
 
+type Theme = {
+  theme: {
+    transitions: {
+      create(args: string[]): string;
+    };
+  };
+};
+
 export type BaseTextFieldProps = TextFieldProps &
   FieldHookConfig<TextFieldProps['value']>;
 
-const StyledTextField = styled(TextField)(({ theme }) => ({
+const StyledTextField = styled(TextField)(({ theme }: Theme) => ({
   '& .MuiFilledInput-root': {
     overflow: 'hidden',
     borderRadius: 6,
