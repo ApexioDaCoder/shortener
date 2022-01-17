@@ -4,8 +4,8 @@ import { Maybe } from '@/types';
 import { ServerResponse } from 'http';
 import { isServer } from '@/utils';
 import axios from 'axios';
-import { Box, CircularProgress } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { Box, CircularProgress } from '@mui/material';
+import { Alert } from '@mui/material';
 
 interface RedirectOptions {
   replace: boolean;

@@ -2,9 +2,10 @@ import React from 'react';
 import QRCode from 'qrcode.react';
 import { saveAs } from 'file-saver';
 import styled from 'styled-components';
-import { Box } from '@material-ui/core';
+import { Box, Typography } from '@mui/material';
 import BaseButton from '@/components/BaseButton';
-import CloudDownloadOutlinedIcon from '@material-ui/icons/CloudDownloadOutlined';
+import CloudDownloadOutlinedIcon from '@mui/icons-material/CloudDownloadOutlined';
+import { Bold } from '@/components/StyleUtils';
 
 const SaveButton = styled(BaseButton)`
   border-top-left-radius: 0;
@@ -34,7 +35,10 @@ interface UrlQrCodeProps {
 
 const UrlQrCode = React.memo<UrlQrCodeProps>(function UrlQrCode({ url, size }) {
   return (
-    <>
+    <Box sx={{ background: '#007FFF', color: 'black', borderRadius: '10px' }}>
+      <Typography sx={{ padding: '5px', textAlign: 'center' }}>
+        <Bold>QR Code</Bold>
+      </Typography>
       <StyledQRCode value={url} renderAs="svg" />
       {/* This hidden qr code is just used to download it easily.
                     Converting the svg to png or jpeg and then downloading didn't work for now. */}
@@ -49,7 +53,7 @@ const UrlQrCode = React.memo<UrlQrCodeProps>(function UrlQrCode({ url, size }) {
       >
         Save
       </SaveButton>
-    </>
+    </Box>
   );
 });
 

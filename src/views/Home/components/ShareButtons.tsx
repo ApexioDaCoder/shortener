@@ -17,7 +17,7 @@ import {
 } from 'react-share';
 import ShareButtonTooltip from './ShareButtonTooltip';
 import { Maybe } from '@/types';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import Spacer from '@/components/Spacer';
 
 interface ShareButtonsProps {

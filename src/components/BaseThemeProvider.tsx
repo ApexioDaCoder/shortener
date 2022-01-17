@@ -1,8 +1,9 @@
 import React from 'react';
 import theme from '@/theme';
-import { CssBaseline } from '@material-ui/core';
-import { MuiThemeProvider, StylesProvider } from '@material-ui/core/styles';
-import { ThemeProvider } from 'styled-components';
+import { CssBaseline } from '@mui/material';
+import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
+import StylesProvider from '@mui/styles/StylesProvider';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 interface BaseThemeProviderProps {
   children: React.ReactNode;
@@ -11,12 +12,14 @@ interface BaseThemeProviderProps {
 function BaseThemeProvider({ children }: BaseThemeProviderProps) {
   return (
     <StylesProvider injectFirst>
-      <MuiThemeProvider theme={theme}>
+      <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
+          <StyledThemeProvider theme={theme}>
+            <CssBaseline />
+            {children}
+          </StyledThemeProvider>
         </ThemeProvider>
-      </MuiThemeProvider>
+      </StyledEngineProvider>
     </StylesProvider>
   );
 }

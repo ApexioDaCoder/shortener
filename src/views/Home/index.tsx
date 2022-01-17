@@ -10,17 +10,17 @@ import ExternalLink from '@/components/ExternalLink';
 import ShareButtons from './components/ShareButtons';
 import UrlQrCode from './components/UrlQrCode';
 import { ShortUrlInput, shortUrlInputSchema } from '@/utils/validationSchemas';
-import { Box, InputAdornment, Typography } from '@material-ui/core';
-import LinkIcon from '@material-ui/icons/Link';
+import { Box, InputAdornment, Typography } from '@mui/material';
+import LinkIcon from '@mui/icons-material/Link';
 import BaseButton from '@/components/BaseButton';
 import Spacer from '@/components/Spacer';
-import Alert from '@material-ui/lab/Alert';
+import Alert from '@mui/material/Alert';
 import { Bold } from '@/components/StyleUtils';
-import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Card from '@material-ui/Card';
-import CardActions from '@material-ui/CardActions';
-import CardContent from '@material-ui/CardContent';
+import Card from '@mui/Card';
+import CardActions from '@mui/CardActions';
+import CardContent from '@mui/CardContent';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isAxiosError(error: any): error is AxiosError {
@@ -124,7 +124,7 @@ const HomeView = () => {
       >
         <UrlShortenerSvg />
       </Box>
-      <Alert severity={'info'}>
+      <Alert severity={'info'} variant="outlined">
         Based on{' '}
         <ExternalLink href="https://onurl.vercel.app/" hasIcon>
           OnURL
@@ -173,58 +173,63 @@ const HomeView = () => {
                 </Spacer>
               </Form>
               <Spacer flexDirection="column" spacing={2} marginY={1}>
-                {(data || error) && (
+                {error && (
                   <Box marginY={2}>
-                    <Alert severity={error ? 'error' : 'success'}>
-                      {error || 'Your new URL has been created successfully!'}
+                    <Alert severity={'error'} variant="outlined">
+                      {error}
                     </Alert>
                   </Box>
                 )}
-                <Box sx={{ backgroundColor: 'white' }}>
-                  {url && (
+                {url && (
+                  <Box
+                    sx={{
+                      backgroundColor: 'white',
+                      padding: '20px',
+                      borderRadius: '10px',
+                    }}
+                    display="flex"
+                    justifyContent="space-between"
+                  >
                     <Box>
                       <Typography noWrap>
                         <ExternalLink href={url}>{url}</ExternalLink>
                       </Typography>
                     </Box>
-                  )}
-                  {shortenedUrl && (
-                    <Box display="flex" alignItems="center">
-                      <Typography noWrap>
-                        <ExternalLink href={shortenedUrl}>
-                          {shortenedUrl}
-                        </ExternalLink>
-                      </Typography>
-                      <Box marginLeft={1}>
-                        <CopyToClipboard
-                          text={shortenedUrl}
-                          onCopy={() => {
-                            setHasCopied(true);
-                            setTimeout(() => {
-                              setHasCopied(false);
-                            }, 2000);
-                          }}
-                        >
-                          <BaseButton
-                            startIcon={<FileCopyOutlinedIcon />}
-                            size="small"
-                            variant="contained"
+                    {shortenedUrl && (
+                      <Box display="flex" justifyContent="end">
+                        <Typography noWrap>
+                          <ExternalLink href={shortenedUrl}>
+                            {shortenedUrl}
+                          </ExternalLink>
+                        </Typography>
+                        <Box marginLeft={1}>
+                          <CopyToClipboard
+                            text={shortenedUrl}
+                            onCopy={() => {
+                              setHasCopied(true);
+                              setTimeout(() => {
+                                setHasCopied(false);
+                              }, 2000);
+                            }}
                           >
-                            {hasCopied ? 'Copied' : 'Copy'}
-                          </BaseButton>
-                        </CopyToClipboard>
+                            <BaseButton
+                              startIcon={<FileCopyOutlinedIcon />}
+                              size="small"
+                              variant="contained"
+                            >
+                              {hasCopied ? 'Copied' : 'Copy'}
+                            </BaseButton>
+                          </CopyToClipboard>
+                        </Box>
                       </Box>
-                    </Box>
-                  )}
-                </Box>
-                {/*shortenedUrl && (
+                    )}
+                  </Box>
+                )}
+                {shortenedUrl && (
                   <Box maxWidth={qrCodeSize}>
-                    <Typography>
-                      <Bold>QR Code:</Bold>
-                    </Typography>
                     <UrlQrCode url={shortenedUrl} size={qrCodeSize} />
                   </Box>
-                )*/}
+                )}
               </Spacer>
             </>
           );

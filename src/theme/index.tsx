@@ -1,6 +1,6 @@
-import { createMuiTheme, responsiveFontSizes, ThemeOptions } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes, DeprecatedThemeOptions, adaptV4Theme } from '@mui/material/styles';
 
-declare module '@material-ui/core/styles/createPalette' {
+declare module '@mui/material/styles/createPalette' {
   interface ColorRange {
     50: string;
     100: string;
@@ -21,7 +21,7 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
-declare module '@material-ui/core/styles/createTypography' {
+declare module '@mui/material/styles/createTypography' {
   interface TypographyOptions {
     fontWeightExtraBold?: number;
     fontFamilyCode?: string;
@@ -40,7 +40,7 @@ declare module '@material-ui/core/styles/createTypography' {
 //   }
 // }
 
-const defaultTheme = createMuiTheme();
+const defaultTheme = createTheme();
 
 const blue = {
   50: '#F0F7FF',
@@ -106,6 +106,7 @@ export const getMetaThemeColor = (mode: 'light' | 'dark') => {
 export const getDesignTokens = (mode: 'light' | 'dark') =>
   ({
     palette: {
+      mode,
       primary: {
         ...blue,
         ...(mode === 'dark' && {
@@ -267,7 +268,7 @@ export const getDesignTokens = (mode: 'light' | 'dark') =>
         fontWeight: 700,
       },
     },
-  } as ThemeOptions);
+  } as DeprecatedThemeOptions);
 
 export function getThemedComponents(theme: any) {
   return {
@@ -547,9 +548,9 @@ export function getThemedComponents(theme: any) {
   };
 }
 
-const darkTheme = createMuiTheme(getDesignTokens('dark'));
+const darkTheme = createTheme(getDesignTokens('dark'));
 
-let theme = createMuiTheme({
+let theme = createTheme({
   palette: {
     background: { paper: '#a0dcff', default: '#a8dcfa' },
     primary: {

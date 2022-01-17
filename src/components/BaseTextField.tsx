@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { TextField, TextFieldProps } from '@material-ui/core';
+import { TextField, TextFieldProps } from '@mui/material';
 import { useField, FieldHookConfig } from 'formik';
-import { styled } from '@material-ui/styles';
+import { styled } from '@mui/styles';
 
 export type BaseTextFieldProps = TextFieldProps &
   FieldHookConfig<TextFieldProps['value']>;
@@ -25,8 +25,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     },
   },
   '& .MuiFormHelperText-root': {
-    marginTop: '15px'
-  }
+    marginTop: '15px',
+  },
 }));
 
 function BaseTextField(props: BaseTextFieldProps) {

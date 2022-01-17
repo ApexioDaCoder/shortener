@@ -4,7 +4,7 @@ import {
   CircularProgress,
   ButtonProps,
   ButtonTypeMap,
-} from '@material-ui/core';
+} from '@mui/material';
 import styled from 'styled-components';
 
 type BaseButtonProps<
